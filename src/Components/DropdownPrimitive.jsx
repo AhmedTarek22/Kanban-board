@@ -2,7 +2,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import clsx from "clsx";
 
 /**
- *  @param {Object} props
+ * @param {Object} props
  * @param {function} props.triggerComponent
  * @param {object} props.items
  * @param {string} props.items.label - The text to display in the dropdown
