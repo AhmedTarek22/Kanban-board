@@ -3,22 +3,7 @@ import { useState } from "react";
 import DialogPrimitive from "./DialogPrimitive";
 import iconBoard from "../assets/icon-board.svg";
 
-const SideMenu = () => {
-  const data = [
-    {
-      title: "Home",
-      id: "1",
-    },
-    {
-      title: "About",
-      id: "2",
-    },
-    {
-      title: "Contact",
-      id: "3",
-    },
-  ];
-  const [selectedBoardIndex, setSelectedBoardIndex] = useState(0);
+const SideMenu = ({ data = [], selectedBoardIndex, setSelectedBoardIndex }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -34,7 +19,7 @@ const SideMenu = () => {
                   {
                     "bg-main-purple !text-white hover:bg-main-purple":
                       selectedBoardIndex === index,
-                  }
+                  },
                 )}
                 data-isactive={selectedBoardIndex === index}
                 onClick={() => setSelectedBoardIndex(index)}
@@ -53,7 +38,7 @@ const SideMenu = () => {
                 <img src={iconBoard} alt="icon board" /> + Create New Board
               </button>
             }
-          ></DialogPrimitive>
+          />
         </li>
       </ul>
     </aside>
