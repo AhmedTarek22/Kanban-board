@@ -18,10 +18,10 @@
   - [x] Tasks
   - [x] Mock data and use it to render the boards
 - Project's functionality
-  - [] Add new board
-  - [] Delete board
-  - [] Cache boards in local storage
-  - [] Edit board
+  - [x] Add new board
+  - [x] Delete board
+  - [x] Cache boards in local storage
+  - [x] Edit board
   - [] Add new task
   - [] Delete task
   - [] Add new Column

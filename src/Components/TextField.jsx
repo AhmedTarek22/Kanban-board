@@ -21,11 +21,11 @@ const TextField = ({
         placeholder={placeholder}
         required={required}
         className={clsx(
-          "w-full rounded-[4px] border border-medium-grey/25 py-2 pl-4 text-body-l",
+          "w-full rounded-[4px] border border-medium-grey/25 py-2 pl-4 text-body-l outline-none focus:border-main-purple",
           {
             "border-red pr-32": isInvalid,
             "pr-4": !isInvalid,
-          }
+          },
         )}
       />
     </div>

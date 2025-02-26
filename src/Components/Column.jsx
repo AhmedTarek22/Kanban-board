@@ -1,6 +1,14 @@
 import Card from "./Card";
 
-const Column = ({ title, tasks=[] }) => {
+/**
+ *
+ * @param {Object} props
+ * @param {String} props.title
+ * @param {Array} props.tasks
+ * @returns {JSX.Element}
+ */
+
+const Column = ({ title, tasks = [] }) => {
   const addNewTaskHandler = () => {};
   return (
     <div className="flex w-72 shrink-0 flex-col gap-4 self-start rounded-lg bg-lines-light px-2">

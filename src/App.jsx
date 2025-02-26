@@ -1,25 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import SideMenu from "./Components/SideMenu";
 import Workspace from "./Components/Workspace";
-import data from "./data.json";
+import { DataContext } from "./DataContext";
 
 function App() {
-  const [dataState, setDataState] = useState(data);
+  const [dataState, setDataState] = useState();
   const [selectedBoardIndex, setSelectedBoardIndex] = useState(0);
 
+  useEffect(() => {
+    const savedData = localStorage.getItem("data");
+    if (savedData) {
+      setDataState(JSON.parse(savedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!dataState) return;
+
+    localStorage.setItem("data", JSON.stringify(dataState));
+  }, [dataState]);
+
   return (
-    <div className="flex h-screen flex-col font-jakarta">
-      <Header />
-      <div className="flex flex-1">
-        <SideMenu
-          data={dataState}
-          selectedBoardIndex={selectedBoardIndex}
-          setSelectedBoardIndex={setSelectedBoardIndex}
-        />
-        <Workspace columns={dataState[selectedBoardIndex]?.columns} />
+    <DataContext.Provider
+      value={{
+        data: dataState || [],
+        setData: setDataState,
+        selectedBoardIndex,
+        setSelectedBoardIndex,
+      }}
+    >
+      <div className="flex h-screen flex-col font-jakarta">
+        <Header />
+        <div className="flex flex-1">
+          <SideMenu />
+          <Workspace />
+        </div>
       </div>
-    </div>
+    </DataContext.Provider>
   );
 }
 
