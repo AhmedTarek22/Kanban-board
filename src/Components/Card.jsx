@@ -7,10 +7,17 @@
 
 import { useContext, useState } from "react";
 import { DataContext } from "../DataContext";
+import { CSS } from "@dnd-kit/utilities";
+import { useSortable } from "@dnd-kit/sortable";
 
 const Card = ({ item, columnId }) => {
   const { setData, selectedBoardIndex } = useContext(DataContext);
   const [isEditMode, setIsEditMode] = useState(false);
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({
+      id: item.id,
+      data: { columnId },
+    });
 
   const onDeleteHandler = () => {
     if (window.confirm("Are you sure you want to delete this card?")) {
@@ -42,20 +49,17 @@ const Card = ({ item, columnId }) => {
     e.target.select();
   };
 
-  const onBlurHandler = (e) => {    
+  const onBlurHandler = (e) => {
     setIsEditMode(false);
-    console.log("test");
     if (e.target.value.trim() === item.title) return;
     setData((prev) => {
       const newData = [...prev];
       const newColumns = newData[selectedBoardIndex].columns.map((column) => {
         if (column.id === columnId) {
-          console.log("true");
           return {
             ...column,
             tasks: column.tasks.map((task) => {
               if (task.id === item.id) {
-                console.log("true");
                 return {
                   ...task,
                   title: e.target.value.trim(),
@@ -67,22 +71,31 @@ const Card = ({ item, columnId }) => {
         }
         return column;
       });
-
       newData[selectedBoardIndex] = {
         ...newData[selectedBoardIndex],
         columns: newColumns,
       };
-
       return newData;
     });
   };
 
   const onKeyDownHandler = (e) => {
-    (e.key === "Enter") && e.target.blur();
+    e.key === "Enter" && e.target.blur();
+  };
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
   };
 
   return (
-    <div className="group/card relative min-h-16 overflow-y-hidden rounded-lg bg-white px-4 py-3 shadow-sm">
+    <div
+      className="group/card relative min-h-16 overflow-y-hidden rounded-lg bg-white px-4 py-3 shadow-sm"
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+    >
       {isEditMode ? (
         <textarea
           className="h-full resize-none text-heading-m outline-light-grey"
