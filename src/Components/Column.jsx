@@ -23,7 +23,10 @@ const Column = ({ id, title, tasks = [] }) => {
       if (column.id === id) {
         return {
           ...column,
-          tasks: [...column.tasks, newTask],
+          tasks: [
+            ...(Array.isArray(column.tasks) ? column.tasks : []),
+            newTask,
+          ],
         };
       }
       return column;
