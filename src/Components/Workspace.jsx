@@ -57,10 +57,11 @@ const Workspace = () => {
 
   const tasksIds = useMemo(() => {
     let tasksIds = [];
-
     if (!columns || columns.length === 0) return tasksIds;
     for (let column of columns) {
-      tasksIds = [...tasksIds, ...column.tasks.map((task) => task.id)];
+      if (column.tasks && Array.isArray(column.tasks)) {
+        tasksIds = [...tasksIds, ...column.tasks.map((task) => task.id)];
+      }
     }
     return tasksIds;
   }, [columns]);
@@ -150,12 +151,14 @@ const Workspace = () => {
               />
             ))}
         </SortableContext>
-        <button
-          onClick={addNewColumnHandler}
-          className="w-72 self-start rounded-lg bg-lines-light py-3 text-heading-m text-medium-grey"
-        >
-          + New Column
-        </button>
+        {data.length !== 0 && (
+          <button
+            onClick={addNewColumnHandler}
+            className="w-72 self-start rounded-lg bg-lines-light py-3 text-heading-m text-medium-grey"
+          >
+            + New Column
+          </button>
+        )}
       </div>
     </DndContext>
   );
