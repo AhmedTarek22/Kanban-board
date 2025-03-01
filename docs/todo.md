@@ -22,9 +22,9 @@
   - [x] Delete board
   - [x] Cache boards in local storage
   - [x] Edit board
-  - [] Add new task
-  - [] Delete task
-  - [] Add new Column
-  - [] Delete Column
-  - [] Edit task
+  - [x] Add new task
+  - [x] Delete task
+  - [x] Add new Column
+  - [x] Delete Column
+  - [x] Edit task
   - [ ] Drag and drop tasks
