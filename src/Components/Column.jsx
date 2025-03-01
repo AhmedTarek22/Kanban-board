@@ -3,7 +3,6 @@ import Card from "./Card";
 import { DataContext } from "../DataContext";
 
 /**
- *
  * @param {Object} props
  * @param {String} props.title
  * @param {Array} props.tasks

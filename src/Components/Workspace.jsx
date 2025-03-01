@@ -15,7 +15,6 @@ import {
 } from "@dnd-kit/sortable";
 
 /**
- *
  * @param {Object} props
  * @param {Array} props.columns
  * @param {Object} props.columns.id
