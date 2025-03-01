@@ -34,7 +34,7 @@ const AddNewBoardForm = ({
   };
 
   const updateData = (boardId, boardName, newColumnsArray, setData) => {
-    setData((prev) => {
+    setData((prev = []) => {
       let newData;
       if (boardId) {
         newData = prev.map((item) => {

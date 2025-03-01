@@ -6,7 +6,6 @@ import { DataContext } from "../DataContext";
 import AddNewBoardForm from "./AddNewBoardForm";
 
 /**
- *
  * @param {Object} props
  * @param {Number} props.selectedBoardIndex
  * @param {Function} props.setSelectedBoardIndex

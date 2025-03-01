@@ -1,5 +1,4 @@
 /**
- *
  * @param {Object} props
  * @param {Object} props.item
  * @returns {JSX.Element}

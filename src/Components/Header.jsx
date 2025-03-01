@@ -9,16 +9,14 @@ const Header = () => {
   const { data, setData, selectedBoardIndex } = useContext(DataContext);
   const [open, setOpen] = useState(false);
 
-  const onEditBoard = () => {
-    setOpen(true);
-  };
+  const onEditBoard = () => setOpen(true);
 
   const onDeleteBoard = () => {
     if (window.confirm("Are you sure you want to delete this board?")) {
       setData((prev) => prev.toSpliced(selectedBoardIndex, 1));
     }
   };
-  
+
   return (
     <header className="flex h-[97px] shrink-0 items-center">
       <div className="flex w-[300px] items-center gap-4 self-stretch border-b border-r border-lines-light pl-8 text-[32px] font-bold">
