@@ -24,7 +24,7 @@ const AddNewBoardForm = ({
 
   const createNewColumnsArray = (formData, columnArray, boardId) => {
     return columnArray.map((column) => {
-      const tasksArray = boardId ? columnArray.tasks : [];
+      const tasksArray = boardId ? column.tasks : [];
       return {
         id: column.id,
         title: formData.get(column.id),
@@ -71,7 +71,6 @@ const AddNewBoardForm = ({
       columnArray,
       boardId,
     );
-
     updateData(boardId, boardName, newColumnsArray, setData);
     toggleDialog(false);
   };
@@ -114,7 +113,7 @@ const AddNewBoardForm = ({
         >
           + Add New Column
         </Button>
-        <Button isFullWidth={true} size={"sm"}>
+        <Button variant="primary" type="submit" size={"sm"} isFullWidth>
           {boardId ? "Update Board" : "Create New Board"}
         </Button>
       </div>
